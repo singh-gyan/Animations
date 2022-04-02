@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+      button {
+        width: 45%;
+        height: 20%;
+        background-color: #007f7f;
+        color: #fff;
+        bottom: -10vh;
+      }
+      #btn-1 {
+        position: absolute;
+        left: 0;
+      }
+      #btn-2 {
+        position: absolute;
+        right: 0;
+      }
+      .wrapper {
+        position: relative;
+        width: 150px;
+        height: 150px;
+      }
+      .box1,
+      .box2,
+      .box3,
+      .box4 {
+        position: absolute;
+        height: 33.3333%;
+        width: 33.3333%;
+        border-radius: 50%;
+      }
+      .wrapper .box1 {
+        animation: animateRow 4s ease-out infinite;
+        animation-delay: -2s;
+        animation-play-state: paused;
+        background-color: #fe5522;      }
+        
+      .wrapper .box2 {
+        right: 0;
+        animation: animateColumn 4s ease-out infinite;
+        animation-delay: -2s;
+        background-color: #ffef59;
+
+        animation-play-state: paused;
+      }
+      .wrapper .box3 {
+        bottom: 0;
+        right: 0;
+        animation: animateRow 4s ease-out infinite;
+        animation-play-state: paused;
+        animation-delay: 0s;
+        background-color: #2bb5f7;
+
+      }
+      .wrapper .box4 {
+        animation: animateColumn 4s ease-out infinite;
+        animation-delay: 0s;
+        animation-play-state: paused;
+        bottom: 0;
+        background-color: #2e7d30;
+
+      }
+
+      @keyframes animateColumn {
+        0% {
+          border-radius: 25vh;
+          background-color: #2e7d30;
+          height: 33.3333%;
+        }
+        25% {
+          border-radius: 25vh;
+          background-color: #fe5522;
+          height: 100%;
+        }
+        50% {
+          border-radius: 25vh;
+          background-color: #ffef59;
+          height: 33.3333%;
+        }
+        75% {
+          border-radius: 25vh;
+          background-color: #2bb5f7;
+          height: 100%;
+        }
+        100% {
+          border-radius: 25vh;
+          background-color: #2e7d30;
+          height: 33.3333%;
+        }
+      }
+      @keyframes animateRow {
+        0% {
+          border-radius: 25vh;
+          background-color: #2bb5f7;
+          width: 33.3333%;
+        }
+        25% {
+          border-radius: 25vh;
+          background-color: #2e7d30;
+          width: 100%;
+        }
+        50% {
+          border-radius: 25vh;
+          background-color: #fe5522;
+          width: 33.3333%;
+        }
+        75% {
+          border-radius: 25vh;
+          background-color: #ffef59;
+          width: 100%;
+        }
+        100% {
+          border-radius: 25vh;
+          background-color: #2bb5f7;
+          width: 33.3333%;
+        }
+      }
+      .box1.stop,.box2.stop,.box3.stop,.box4.stop{
+        animation-iteration-count: 1;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="animation" class="wrapper">
+      <div class="box4 stop" id="box4"></div>
+      <div class="box3 stop" id="box2"></div>
+      <div class="box2 stop" id="box3"></div>
+      <div class="box1 stop" id="box1"></div>
+      <button onclick="start()" id="btn-1">Start</button>
+      <button onclick="stop()" id="btn-2">Stop</button>
+    </div>
+  </body>
+  <script>
+    function start() {
+      const box1 = document.getElementById("box1");
+      box1.classList.remove("stop")
+      box1.style.animationPlayState = "running";
+      const box2 = document.getElementById("box2");
+      box2.classList.remove("stop")
+      box2.style.animationPlayState = "running";
+
+      const box3 = document.getElementById("box3");
+      box3.classList.remove("stop")
+      box3.style.animationPlayState = "running";
+
+      const box4 = document.getElementById("box4");
+      box4.classList.remove("stop")
+      box4.style.animationPlayState = "running";
+
+    }
+    function stop() {
+      const box1 = document.getElementById("box1");
+      box1.classList.add("stop")
+      box1.style.animationPlayState = "paused";
+
+      const box2 = document.getElementById("box2");
+      box2.classList.add("stop")
+      box2.style.animationPlayState = "paused";
+
+
+      const box3 = document.getElementById("box3");
+      box3.classList.add("stop")
+        box3.style.animationPlayState = "paused";
+
+      const box4 = document.getElementById("box4");
+      box4.classList.add("stop")
+        box4.style.animationPlayState = "paused";
+
+    }
+  </script>
+</html>
